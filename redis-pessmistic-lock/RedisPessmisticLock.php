@@ -1,9 +1,10 @@
 <?php
 /**
  * redis 悲观锁
- * 
+ * @author mengqianyu <mqycn@sina.cn>
+ * @version 1.0 
  */
-namespace PessmisticLock;
+namespace redis;
 
 class RedisPessmisticLock 
 {
@@ -27,7 +28,7 @@ class RedisPessmisticLock
                 if ($getTime > $microtime) {
                     continue; // 未超时继续等待
                 }
-                // 超时,抢锁,可能有几毫秒级时间差可忽略
+                // 超时,抢锁,可能会有几毫秒级时间差，可忽略
                 $previousTime = $redis->getSet($lockKey, $microTimeout);
                 if ((int)$previousTime < $microtime) {
                     break;
