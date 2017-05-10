@@ -1,5 +1,5 @@
 # redis 悲观锁
-`
+```
 $redis = new \Redis();
 $redis->connect('127.0.0.1', 6379);
 $stockKey = 'goods.stock';
@@ -13,4 +13,4 @@ if ($stocks >= $count) {
     echo "库存不足，目前剩余库存：" . $stocks;
 }
 $redisLock->unlock();
-`
+```
