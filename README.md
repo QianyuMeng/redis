@@ -1,7 +1,7 @@
 # redis 悲观锁
 
 可以对redis指定的key进行锁定，支持指定锁定时间（毫秒），超出锁定时间将自动释放锁，使用示例如下：
-```
+```php
 $redis = new \Redis();
 $redis->connect('127.0.0.1', 6379);
 $stockKey = 'goods.stock';
